@@ -79,3 +79,14 @@ export const addProject = async (req: Request, res: Response) => {
   await profile.save();
   res.status(201).json(profile);
 };
+
+export const updateProject = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const profile = await Profile.findOne();
+  if (!profile) return res.status(404).json({ message: 'Perfil no encontrado' });
+  const project = profile.projects.id(id);
+  if (!project) return res.status(404).json({ message: 'Proyecto no encontrado' });
+  Object.assign(project, req.body);
+  await profile.save();
+  res.status(200).json(profile);
+};

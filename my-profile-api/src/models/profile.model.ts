@@ -26,6 +26,7 @@ const projectSchema = new mongoose.Schema({
   github: String,
   name: String,
   description: String,
+  image: String, // url de la imagen
 });
 
 const profileSchema = new mongoose.Schema({
