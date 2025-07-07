@@ -21,6 +21,13 @@ const languageSchema = new mongoose.Schema({
   level: String,
 });
 
+const projectSchema = new mongoose.Schema({
+  web: String,
+  github: String,
+  name: String,
+  description: String,
+});
+
 const profileSchema = new mongoose.Schema({
   name: String,
   title: String,
@@ -28,6 +35,8 @@ const profileSchema = new mongoose.Schema({
   experiences: [experienceSchema],
   education: [educationSchema],
   languages: [languageSchema],
+  skills: [String],
+  projects: [projectSchema],
 });
 
 export const Profile = mongoose.model('Profile', profileSchema);

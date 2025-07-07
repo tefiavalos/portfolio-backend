@@ -60,3 +60,22 @@ export const createProfile = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Error al crear perfil' });
   }
 };
+
+export const addSkill = async (req: Request, res: Response) => {
+  const profile = await Profile.findOne();
+  if (!profile) return res.status(404).json({ message: 'Perfil no encontrado' });
+  if (!Array.isArray(req.body.skills)) {
+    return res.status(400).json({ message: 'Se espera un array de skills' });
+  }
+  profile.skills.push(...req.body.skills);
+  await profile.save();
+  res.status(201).json(profile);
+};
+
+export const addProject = async (req: Request, res: Response) => {
+  const profile = await Profile.findOne();
+  if (!profile) return res.status(404).json({ message: 'Perfil no encontrado' });
+  profile.projects.push(req.body);
+  await profile.save();
+  res.status(201).json(profile);
+};

@@ -19,6 +19,13 @@ export interface Language {
   level: string;
 }
 
+export interface Project {
+  web: string;
+  github: string;
+  name: string;
+  description: string;
+}
+
 export interface ProfileType {
   name: string;
   title: string;
@@ -26,4 +33,6 @@ export interface ProfileType {
   experiences: Experience[];
   education: Education[];
   languages: Language[];
+  skills: string[];
+  projects: Project[];
 }
