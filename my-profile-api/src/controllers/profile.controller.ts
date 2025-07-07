@@ -45,3 +45,18 @@ export const addLanguage = async (req: Request, res: Response) => {
   await profile.save();
   res.status(201).json(profile);
 };
+
+export const createProfile = async (req: Request, res: Response) => {
+  try {
+    // Verifica si ya existe un perfil
+    const existing = await Profile.findOne();
+    if (existing) {
+      return res.status(400).json({ message: 'Ya existe un perfil' });
+    }
+    const profile = new Profile(req.body);
+    await profile.save();
+    res.status(201).json(profile);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al crear perfil' });
+  }
+};
