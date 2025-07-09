@@ -24,7 +24,7 @@ export interface Project {
   github: string;
   name: string;
   description: string;
-  image: string; // url de la imagen
+  image: string;
 }
 
 export interface ProfileType {

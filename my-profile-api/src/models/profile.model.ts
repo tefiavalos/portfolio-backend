@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const experienceSchema = new mongoose.Schema({
   company: String,
@@ -26,7 +26,7 @@ const projectSchema = new mongoose.Schema({
   github: String,
   name: String,
   description: String,
-  image: String, // url de la imagen
+  image: String,
 });
 
 const profileSchema = new mongoose.Schema({
@@ -40,4 +40,4 @@ const profileSchema = new mongoose.Schema({
   projects: [projectSchema],
 });
 
-export const Profile = mongoose.model('Profile', profileSchema);
+export const Profile = mongoose.model("Profile", profileSchema);
